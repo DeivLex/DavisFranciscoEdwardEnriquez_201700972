@@ -6,6 +6,7 @@
 package chino.shop;
 
 import static chino.shop.ChinoShop.Lista_Usuarios;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Grafica extends javax.swing.JFrame {
      */
     public Grafica() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -54,6 +56,11 @@ public class Grafica extends javax.swing.JFrame {
         });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,15 +111,24 @@ public class Grafica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    Interfaz v = new Interfaz();
     boolean entrar;
     entrar =  Lista_Usuarios.existe_enlista_login(jTextField1.getText(),jPasswordField1.getText());
     if (entrar==true){
-    System.out.println("Si entro");
+    //JOptionPane.showMessageDialog(null, "Bienvenido");
+    v.show();
+    this.dispose();
     } else {
-    System.out.println("No entro");
+    JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrecta");
     }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    jPasswordField1.setText("");
+    jTextField1.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

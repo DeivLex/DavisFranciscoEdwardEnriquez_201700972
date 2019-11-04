@@ -16,11 +16,10 @@ public class ChinoShop {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Lista_Usuarios.Crear_usuario(new Usuario("1","",""));
         Grafica ventana = new Grafica();
         ventana.setTitle("Inicio De Sesion");
         ventana.show();
-        CrearUsuario v = new CrearUsuario();
-        v.show();
         // TODO code application logic here
     }
     
