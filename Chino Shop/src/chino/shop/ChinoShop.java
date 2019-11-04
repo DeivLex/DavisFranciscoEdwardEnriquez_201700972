@@ -10,6 +10,7 @@ package chino.shop;
  * @author Davis
  */
 public class ChinoShop {
+    public static ListaEnlazada Lista_Usuarios = new ListaEnlazada();
 
     /**
      * @param args the command line arguments
@@ -18,6 +19,8 @@ public class ChinoShop {
         Grafica ventana = new Grafica();
         ventana.setTitle("Inicio De Sesion");
         ventana.show();
+        CrearUsuario v = new CrearUsuario();
+        v.show();
         // TODO code application logic here
     }
     

@@ -10,12 +10,22 @@ package chino.shop;
  * @author Davis
  */
 public class Usuario {
+    private String Cui;
     private String User;
-    private String Pass;
+    private String Pass;    
 
-    public Usuario(String User, String Pass) {
+    public Usuario(String Cui, String User, String Pass) {
+        this.Cui = Cui;
         this.User = User;
         this.Pass = Pass;
+    }
+
+    public String getCui() {
+        return Cui;
+    }
+
+    public void setCui(String Cui) {
+        this.Cui = Cui;
     }
 
     public String getUser() {
