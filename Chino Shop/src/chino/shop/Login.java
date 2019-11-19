@@ -7,6 +7,7 @@ package chino.shop;
 
 import static chino.shop.ChinoShop.Lista_Usuarios;
 import javax.swing.JOptionPane;
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
  *
@@ -18,8 +19,11 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Grafica
      */
     public Login() {
-        initComponents();
-        this.setLocationRelativeTo(null);
+            initComponents();
+            this.setTitle("Inicio De Sesion");
+            this.setLocationRelativeTo(null);
+            Login.setDefaultLookAndFeelDecorated(true);
+            SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.NebulaBrickWallSkin");
     }
 
     /**

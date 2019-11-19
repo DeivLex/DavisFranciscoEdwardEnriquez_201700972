@@ -6,6 +6,7 @@
 package chino.shop;
 
 import static chino.shop.ChinoShop.categoria;
+import static chino.shop.ChinoShop.productos;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +20,11 @@ public class CrearProductos extends javax.swing.JFrame {
      */
     public CrearProductos() {
         initComponents();
+        this.setTitle("Crear Productos");
         this.setLocationRelativeTo(null);
+        for (int i = 0; i < categoria.tam(); i++) {
+            jComboBox1.addItem(categoria.getCat(i));
+        }
     }
 
     /**
@@ -111,7 +116,11 @@ public class CrearProductos extends javax.swing.JFrame {
 
         jLabel5.setText("Existencias");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,9 +153,9 @@ public class CrearProductos extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
                         .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField2)
+                            .addComponent(jComboBox1, 0, 140, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -190,8 +199,11 @@ public class CrearProductos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        double precio=Double.parseDouble(jTextField3.getText());
+        int stock=Integer.parseInt(jTextField4.getText());
+        productos.insertar(productos.tam()+1, jComboBox1.getSelectedItem().toString(),jTextField2.getText(),precio, stock);
         // TODO add your handling code here:
+        productos.imprimir();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -210,9 +222,16 @@ public class CrearProductos extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 categoria.insertar(jTextField1.getText());
 jTextField1.setText("");
+//if(categoria.Existe(jTextField1.getText())==false){
+jComboBox1.addItem(jTextField1.getText());
+//}
 JOptionPane.showMessageDialog(null, "Categoria agregada con exito");
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
