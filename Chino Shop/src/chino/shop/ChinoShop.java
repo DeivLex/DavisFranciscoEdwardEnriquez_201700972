@@ -11,16 +11,19 @@ package chino.shop;
  */
 public class ChinoShop {
     public static ListaEnlazada Lista_Usuarios = new ListaEnlazada();
+    public static Lista categoria = new Lista();
+    public static Matriz productos = new Matriz();
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Lista_Usuarios.Crear_usuario(new Usuario("1","",""));
-        Grafica ventana = new Grafica();
+        Login ventana = new Login();
         ventana.setTitle("Inicio De Sesion");
         ventana.show();
-        // TODO code application logic here
+        //------------------------------
+        
     }
     
 }

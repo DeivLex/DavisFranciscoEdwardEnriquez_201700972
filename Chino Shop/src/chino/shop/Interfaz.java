@@ -43,6 +43,11 @@ public class Interfaz extends javax.swing.JFrame {
         });
 
         jButton2.setText("Agregar Productos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Registro De Ventas");
 
@@ -94,12 +99,19 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Grafica ventana = new Grafica();
+        Login ventana = new Login();
         ventana.setTitle("Inicio De Sesion");
         ventana.show();
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+CrearProductos v = new CrearProductos();
+v.show();
+this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
