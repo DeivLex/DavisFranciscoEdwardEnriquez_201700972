@@ -165,4 +165,13 @@ public class Matriz {
         System.out.println();
         }
     }
+        public int tam (){
+        int i=0;
+        Nodo reco = raiz;
+        while (reco != null) {
+            i++;
+            reco = reco.sig;
+        }
+        return i;
+    }
 }

@@ -16,6 +16,7 @@ public class Interfaz extends javax.swing.JFrame {
      */
     public Interfaz() {
         initComponents();
+        this.setTitle("Chino Shop");
         this.setLocationRelativeTo(null);
     }
 

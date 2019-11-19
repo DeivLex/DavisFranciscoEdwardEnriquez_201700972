@@ -20,7 +20,6 @@ public class ChinoShop {
     public static void main(String[] args) {
         Lista_Usuarios.Crear_usuario(new Usuario("1","",""));
         Login ventana = new Login();
-        ventana.setTitle("Inicio De Sesion");
         ventana.show();
         //------------------------------
         

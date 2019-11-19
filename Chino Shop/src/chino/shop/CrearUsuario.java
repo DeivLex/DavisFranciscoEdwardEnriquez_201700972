@@ -18,6 +18,7 @@ public class CrearUsuario extends javax.swing.JFrame {
      */
     public CrearUsuario() {
         initComponents();
+        this.setTitle("Crear Usuarios");
         this.setLocationRelativeTo(null);
     }
 
