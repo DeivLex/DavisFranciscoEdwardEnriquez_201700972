@@ -33,10 +33,10 @@ public class Ventas extends javax.swing.JFrame {
         
             LocalDateTime myDateObj = LocalDateTime.now();  
     DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("HH");  
-    String formattedDate = myDateObj.format(myFormatObj);  
-        Integer value = Integer.parseInt(formattedDate);
+    String formattedDate = myDateObj.format(myFormatObj);
+    Integer value = Integer.parseInt(formattedDate);
         Integer min = 5;
-        Integer max = 23;
+        Integer max = 22;
         Integer step = 1;
         SpinnerNumberModel model = new SpinnerNumberModel(value, min, max, step);
         jSpinner1.setModel(model);
