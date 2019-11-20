@@ -5,7 +5,9 @@
  */
 package chino.shop;
 
+import static chino.shop.ChinoShop.Encriptar;
 import static chino.shop.ChinoShop.Lista_Usuarios;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -142,10 +144,13 @@ public class CrearUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    String enc="";
+    enc=Encriptar(jTextField3.getText());
+        Lista_Usuarios.Crear_usuario(new Usuario(jTextField1.getText(),jTextField2.getText(),enc));   
+        JOptionPane.showMessageDialog(null, "Usuario creado con exito"); 
     jTextField1.setText("");
     jTextField2.setText("");
     jTextField3.setText("");
-        Lista_Usuarios.Crear_usuario(new Usuario(jTextField1.getText(),jTextField2.getText(),jTextField3.getText()));        
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

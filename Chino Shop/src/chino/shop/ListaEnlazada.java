@@ -5,6 +5,11 @@
  */
 package chino.shop;
 
+import static chino.shop.ChinoShop.Desencriptar;
+import static chino.shop.ChinoShop.Encriptar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Davis
@@ -137,7 +142,13 @@ public class ListaEnlazada {
             Usuario aux;
             while(actual!=null){
                 aux=(Usuario)actual.getcont();
-                if (id_rec.equals(aux.getUser())&&contra_rec.equals(aux.getPass())) {
+                String des="";
+                try {
+                    des = Encriptar(contra_rec);
+                } catch (Exception ex) {
+                    Logger.getLogger(ListaEnlazada.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (id_rec.equals(aux.getUser())&&des.equals(aux.getPass())) {
                     existe=true;
                 }
                 actual=actual.getSig();
@@ -151,7 +162,13 @@ public class ListaEnlazada {
             Usuario regresar=null;
             while(actual!=null){
                 aux=(Usuario)actual.getcont();
-                if (id_rec.equals(aux.getUser())&&contra_rec.equals(aux.getPass())) {
+                String des="";
+                try {
+                    des = Encriptar(contra_rec);
+                } catch (Exception ex) {
+                    Logger.getLogger(ListaEnlazada.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (id_rec.equals(aux.getUser())&&des.equals(aux.getPass())) {
                     regresar=((Usuario)actual.getcont());
                 }
                 actual=actual.getSig();

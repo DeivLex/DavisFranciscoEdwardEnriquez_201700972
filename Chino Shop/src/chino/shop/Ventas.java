@@ -36,7 +36,7 @@ public class Ventas extends javax.swing.JFrame {
     String formattedDate = myDateObj.format(myFormatObj);  
         Integer value = Integer.parseInt(formattedDate);
         Integer min = 5;
-        Integer max = 22;
+        Integer max = 23;
         Integer step = 1;
         SpinnerNumberModel model = new SpinnerNumberModel(value, min, max, step);
         jSpinner1.setModel(model);
