@@ -23,7 +23,7 @@ public class Login extends javax.swing.JFrame {
             this.setTitle("Inicio De Sesion");
             this.setLocationRelativeTo(null);
             Login.setDefaultLookAndFeelDecorated(true);
-            SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.NebulaBrickWallSkin");
+            SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.SaharaSkin");
     }
 
     /**
@@ -71,21 +71,22 @@ public class Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(18, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                         .addComponent(jButton1)
-                        .addGap(35, 35, 35)
+                        .addGap(43, 43, 43)
                         .addComponent(jButton2)
-                        .addGap(43, 43, 43))
-                    .addComponent(jTextField1)
-                    .addComponent(jPasswordField1))
-                .addContainerGap())
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -116,11 +117,16 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     Interfaz v = new Interfaz();
+    Ventas a = new Ventas();
     boolean entrar;
     entrar =  Lista_Usuarios.existe_enlista_login(jTextField1.getText(),jPasswordField1.getText());
     if (entrar==true){
-    //JOptionPane.showMessageDialog(null, "Bienvenido");
+    Usuario Obtener = Lista_Usuarios.obtener_user_login(jTextField1.getText(),jPasswordField1.getText());
+    if(Obtener.getCui().equalsIgnoreCase("1")){
     v.show();
+    }else{
+    a.show();
+    }
     this.dispose();
     } else {
     JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrecta");

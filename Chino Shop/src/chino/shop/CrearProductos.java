@@ -199,10 +199,24 @@ public class CrearProductos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        double precio=Double.parseDouble(jTextField3.getText());
-        int stock=Integer.parseInt(jTextField4.getText());
+        boolean insert=false;
+        double precio=0;
+        int stock=0;
+        try{
+        precio=Double.parseDouble(jTextField3.getText());
+        stock=Integer.parseInt(jTextField4.getText());
+        insert=true;
+        }catch(Exception e){
+        insert=false;   
+        JOptionPane.showMessageDialog(null, "Precio y/o existencias, Tiene digitos erroneos");
+        }
+        if(insert==true){
         productos.insertar(productos.tam()+1, jComboBox1.getSelectedItem().toString(),jTextField2.getText(),precio, stock);
-        // TODO add your handling code here:
+        jTextField4.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        JOptionPane.showMessageDialog(null, "Producto agregado con exito");
+        }
         productos.imprimir();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -222,9 +236,10 @@ public class CrearProductos extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 categoria.insertar(jTextField1.getText());
 jTextField1.setText("");
-//if(categoria.Existe(jTextField1.getText())==false){
-jComboBox1.addItem(jTextField1.getText());
-//}
+jComboBox1.removeAllItems();
+        for (int i = 0; i < categoria.tam(); i++) {
+            jComboBox1.addItem(categoria.getCat(i));
+        }
 JOptionPane.showMessageDialog(null, "Categoria agregada con exito");
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed

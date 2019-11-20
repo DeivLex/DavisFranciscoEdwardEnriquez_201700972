@@ -1,0 +1,5 @@
+digraph G {
+node[shape=record];
+graph[pencolor=transparent];
+
+P0[label="Hora: 18:00"pos="0,0!"];0[label="Cliente: Karla\nProductos: , Jabon\nTotal: Q4.0"pos="0,-2!"];P1[label="Hora: 21:00"pos="2,0!"];P2[label="Hora: 22:00"pos="4,0!"];P0->P1->P2;P0->0;P1;P2;}

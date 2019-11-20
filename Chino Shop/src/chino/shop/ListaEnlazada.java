@@ -159,13 +159,31 @@ public class ListaEnlazada {
             return(regresar);
         }
         
-        public void Imprimir(){
+        public String Imprimir(){
+            int i=1;
+            String cui,name,pass;
+            String rep="";
             Nodo actual=Inicio;
-            String cui;
             while(actual!=null){
                 cui =((Usuario)actual.getcont()).getCui();
-                System.out.println(cui);
+                name =((Usuario)actual.getcont()).getUser();
+                pass=((Usuario)actual.getcont()).getPass();
+                rep+=i+"[label=\"Cui: "+cui+"\\nNombre: "+name+"\\nContraseña:"+pass+"\"];";
+                i++;
                 actual=actual.getSig();
             }
+            return rep;
+        }
+        public String Imprimir2(){
+            int i=1;
+            String rep="Inicio";
+            Nodo actual=Inicio;
+            while(actual!=null){
+                rep+="->"+(i);
+                i++;
+                actual=actual.getSig();
+            }
+            rep+=";";
+            return rep;
         }
 }

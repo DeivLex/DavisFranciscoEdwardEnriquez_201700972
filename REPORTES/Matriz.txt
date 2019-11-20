@@ -1,0 +1,5 @@
+digraph G {
+node[shape=record];
+graph[pencolor=transparent];
+
+P0[label="Categoria: Higiene"pos="0,0!"];0[label="Nombre: Papel\nPrecio: 1.0\nExistencias: 20"pos="0,-2!"];P1[label="Categoria: Tecno"pos="2,0!"];1[label="Nombre: Mouse\nPrecio: 21.0\nExistencias: 31"pos="2,-2!"];2[label="Nombre: Pc\nPrecio: 1000.0\nExistencias: 2"pos="2,-4!"];P2[label="Categoria: Baño"pos="4,0!"];3[label="Nombre: Jabon\nPrecio: 12.0\nExistencias: 21"pos="4,-2!"];4[label="Nombre: Champu\nPrecio: 20.0\nExistencias: 23"pos="4,-4!"];P0->P1->P2;P0->0;P1->1->2;P2->3->4;}

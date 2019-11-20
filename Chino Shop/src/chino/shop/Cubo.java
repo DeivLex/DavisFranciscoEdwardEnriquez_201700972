@@ -5,34 +5,36 @@
  */
 package chino.shop;
 
-import static chino.shop.ChinoShop.categoria;
+import static chino.shop.ChinoShop.fecha_;
+import static chino.shop.ChinoShop.hora_;
 
 /**
  *
  * @author Davis
  */
-public class Matriz {
-        class Nodo {
-                 String Categoria;
-                 String Nombre;
-                 double Precio;
-                 int Existencias;
+public class Cubo {
+            class Nodo {
+                 String Cliente;
+                 String Dia;
+                 String Hora;
+                 String Producto;
+                 double Total;
                  Nodo sig, ant;
                }
         private Nodo raiz;
-    
-    public Matriz () {
+    public Cubo () {
         raiz=null;
     }
-      
-    void insertar (int pos, String Categoria,String Nombre,double Precio,int Existencias)
+     void insertar (int pos,String Cliente, String Dia,String Hora,String Producto,double Total)
     {
         if (pos <= cantidad () + 1)    {
             Nodo nuevo = new Nodo ();
-            nuevo.Categoria = Categoria;
-            nuevo.Nombre = Nombre;
-            nuevo.Precio = Precio;
-            nuevo.Existencias=Existencias;
+            nuevo.Cliente=Cliente;
+            nuevo.Dia = Dia;
+            nuevo.Hora=Hora;
+            nuevo.Producto=Producto;
+            nuevo.Total=Total;
+            
             if (pos == 1){
                 nuevo.sig = raiz;
                 if (raiz!=null)
@@ -60,52 +62,30 @@ public class Matriz {
         }
     }
 
-    public String getCat(int j){
-    String retorna="";
-    int i=0;
-        Nodo reco=raiz;
-        while (reco!=null) {
-            if(j==i){
-            retorna=reco.Nombre;
-            return retorna;
+    public String extraer (int pos) {
+        if (pos <= cantidad ())    {
+            String informacion;
+            if (pos == 1) {
+                informacion = raiz.Hora;
+                raiz = raiz.sig;
+                if (raiz!=null)
+                    raiz.ant=null;
+            } else {
+                Nodo reco;
+                reco = raiz;
+                for (int f = 1 ; f <= pos - 2 ; f++)
+                    reco = reco.sig;
+                Nodo prox = reco.sig;
+                reco.sig = prox.sig;
+                Nodo siguiente=prox.sig;
+                if (siguiente!=null)
+                    siguiente.ant=reco;
+                informacion = prox.Hora;
             }
-            i++;
-            reco=reco.sig;
+            return informacion;
         }
-    return retorna;
-    }
-    
-    public double getPrecio(String j){
-    double retorna=0;
-        Nodo reco=raiz;
-        while (reco!=null) {
-            if(reco.Nombre.equalsIgnoreCase(j)){
-            retorna=reco.Precio;
-            return retorna;
-            }
-            reco=reco.sig;
-        }
-    return retorna;
-    }
-    public boolean getEx(String j,int ex){
-    int act;    
-    boolean retorna=false;
-        Nodo reco=raiz;
-        while (reco!=null) {
-            if(reco.Nombre.equalsIgnoreCase(j)){
-            act=reco.Existencias;
-            if((act-ex)<0){
-            retorna=false;
-            return retorna;
-            }else{
-            reco.Existencias=act-ex;    
-            retorna=true;
-            return retorna;
-            }
-            }
-            reco=reco.sig;
-        }
-    return retorna;
+        else
+            return "No esta";
     }
 
     public void borrar (int pos)
@@ -145,7 +125,7 @@ public class Matriz {
             Nodo reco1=raiz;
             Nodo reco2=raiz.sig;
             while (reco2!=null) {
-                if (reco2.Nombre.compareTo(reco1.Nombre)<0) {
+                if (reco2.Hora.compareTo(reco1.Hora)<0) {
                     return false;
                 }
                 reco2=reco2.sig;
@@ -158,7 +138,7 @@ public class Matriz {
     public boolean existe(String x) {
         Nodo reco=raiz;
         while (reco!=null) {
-            if (reco.Nombre.equalsIgnoreCase(x))
+            if (reco.Cliente.equalsIgnoreCase(x))
                 return true;
             reco=reco.sig;
         }
@@ -175,16 +155,16 @@ public class Matriz {
     
     
     
-    public String imprimir (){
+    public String imprimir (String date){
         String ret="";
         int cont=0;
-        for(int i=0;i<categoria.tam();i++){
-        ret+="P"+i+"[label=\"Categoria: "+categoria.getCat(i)+"\"pos=\""+(i*2)+",0!\"];";
+        for(int i=0;i<hora_.tam();i++){
+        ret+="P"+i+"[label=\"Hora: "+hora_.getCat(i)+":00\"pos=\""+(i*2)+",0!\"];";
         Nodo reco = raiz;
         int j=1;
         while (reco != null) {
-            if(reco.Categoria.equalsIgnoreCase(categoria.getCat(i))){
-            ret+=cont+"[label=\"Nombre: "+reco.Nombre+"\\nPrecio: "+reco.Precio+"\\nExistencias: "+reco.Existencias+"\"pos=\""+(i*2)+",-"+(j*2)+"!\"];";
+            if(reco.Hora.equalsIgnoreCase(hora_.getCat(i))&&reco.Dia.equalsIgnoreCase(date)){
+            ret+=cont+"[label=\"Cliente: "+reco.Cliente+"\\nProductos: "+reco.Producto+"\\nTotal: Q"+reco.Total+"\"pos=\""+(i*2)+",-"+(j*2)+"!\"];";
             cont++;
             j++;
             }
@@ -193,24 +173,24 @@ public class Matriz {
         }
         return ret;
     }
-        public String imprimir2(){
+            public String imprimir2(String date){
         String ret="";
         String pa="";
         String tot="";
         int cont=0;
-        for(int i=0;i<categoria.tam();i++){
+        for(int i=0;i<hora_.tam();i++){
         pa+="P"+i;
         ret+="P"+i;
         Nodo reco = raiz;
         while (reco != null) {
-            if(reco.Categoria.equalsIgnoreCase(categoria.getCat(i))){
+            if(reco.Hora.equalsIgnoreCase(hora_.getCat(i))&&reco.Dia.equalsIgnoreCase(date)){
             ret+="->"+cont;
             cont++;
             }
             reco = reco.sig;
         }
         ret+=";";
-        if(i<categoria.tam()-1){
+        if(i<hora_.tam()-1){
         pa+="->";
         }
         }
@@ -218,9 +198,7 @@ public class Matriz {
         tot=pa+ret;
         return tot;
     }
-
-    
-    public int tam (){
+        public int tam (){
         int i=0;
         Nodo reco = raiz;
         while (reco != null) {

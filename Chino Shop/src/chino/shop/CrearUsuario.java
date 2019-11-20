@@ -142,7 +142,10 @@ public class CrearUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-Lista_Usuarios.Crear_usuario(new Usuario(jTextField1.getText(),jTextField2.getText(),jTextField3.getText()));        
+    jTextField1.setText("");
+    jTextField2.setText("");
+    jTextField3.setText("");
+        Lista_Usuarios.Crear_usuario(new Usuario(jTextField1.getText(),jTextField2.getText(),jTextField3.getText()));        
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

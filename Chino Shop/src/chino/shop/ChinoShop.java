@@ -13,12 +13,16 @@ public class ChinoShop {
     public static ListaEnlazada Lista_Usuarios = new ListaEnlazada();
     public static Lista categoria = new Lista();
     public static Matriz productos = new Matriz();
+    public static Lista hora_ = new Lista();
+    public static Lista fecha_ = new Lista();
+    public static Cubo ventas = new Cubo();
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Lista_Usuarios.Crear_usuario(new Usuario("1","",""));
+        
+        Lista_Usuarios.Crear_usuario(new Usuario("1","Admin","Admin"));
         Login ventana = new Login();
         ventana.show();
         //------------------------------
